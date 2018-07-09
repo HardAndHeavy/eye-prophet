@@ -1,7 +1,7 @@
 FROM python:3.6-alpine
 
 WORKDIR /app
-ADD . /app
+ADD ./app /app
 
 RUN apk --no-cache --update-cache add gcc g++ gfortran build-base wget freetype-dev libpng-dev openblas-dev python-dev python3-dev
 RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
