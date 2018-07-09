@@ -1,5 +1,7 @@
 # eye-prophet
-Based on the [Prophet](https://facebook.github.io/prophet).
+Web server for forecasting time series data based on the [Prophet](https://facebook.github.io/prophet).
+
+[Example on Heroku](https://eye-prophet.herokuapp.com)
 
 # Run container
 ```
