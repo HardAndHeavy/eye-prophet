@@ -9,5 +9,10 @@ def root():
     result = forecast(params)
     return result.to_json(orient='split')
 
+@app.route("/version")
+def version():
+    import fbprophet
+    return fbprophet.__version__
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)

@@ -1,2 +1,5 @@
 Flask
+cython
+numpy
+pystan
 fbprophet
