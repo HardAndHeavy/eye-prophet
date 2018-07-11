@@ -5,13 +5,15 @@ RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 
 RUN pip3 install --upgrade --no-cache-dir pip
 RUN pip3 install --upgrade --no-cache-dir setuptools
-RUN pip3 install --upgrade --no-cache-dir Flask
 RUN pip3 install --upgrade --no-cache-dir numpy
 RUN pip3 install --upgrade --no-cache-dir fbprophet
+RUN pip3 install --upgrade --no-cache-dir Flask
+RUN pip3 install --upgrade --no-cache-dir gunicorn
 
 EXPOSE 80
 
-WORKDIR /app
-ADD ./app /app
+WORKDIR /deploy/app
+COPY ./app /deploy/app
+COPY gunicorn_config.py /deploy/gunicorn_config.py
 
-CMD ["python", "app.py"]
+CMD gunicorn app:app --config /deploy/gunicorn_config.py
