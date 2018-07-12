@@ -10,10 +10,10 @@ RUN pip3 install --upgrade --no-cache-dir fbprophet
 RUN pip3 install --upgrade --no-cache-dir Flask
 RUN pip3 install --upgrade --no-cache-dir gunicorn
 
-EXPOSE 80
-
-WORKDIR /deploy/app
-COPY ./app /deploy/app
 COPY gunicorn_config.py /deploy/gunicorn_config.py
+COPY ./app /deploy/app
+WORKDIR /deploy/app
+
+EXPOSE 80
 
 CMD gunicorn app:app --config /deploy/gunicorn_config.py
