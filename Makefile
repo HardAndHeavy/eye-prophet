@@ -2,6 +2,7 @@ build:
 	docker build -t hardandheavy/eye-prophet . -m 4g
 
 publish-docker:
+	docker image tag telegram:latest hardandheavy/eye-prophet:latest
 	docker push hardandheavy/eye-prophet:latest
 
 publish-heroku:
