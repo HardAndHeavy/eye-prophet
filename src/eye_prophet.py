@@ -2,7 +2,7 @@ import pandas as pd
 from prophet import Prophet
 
 def forecast(params):
-  df = pd.io.json.json_normalize(params.get('history'))
+  df = pd.json_normalize(params.get('history'))
   m = Prophet()
   m.fit(df)
   
