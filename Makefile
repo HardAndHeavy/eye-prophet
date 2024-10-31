@@ -1,12 +1,11 @@
 build:
-	docker build -t hardandheavy/eye-prophet . -m 4g
+	docker build -t eye-prophet:$(tag) .
 
-publish-docker:
-	docker push hardandheavy/eye-prophet
+publish:
+	docker image tag eye-prophet:$(tag) hardandheavy/eye-prophet:$(tag)
+	docker push hardandheavy/eye-prophet:$(tag)
+	docker image tag eye-prophet:$(tag) hardandheavy/eye-prophet:latest
+	docker push hardandheavy/eye-prophet:latest
 
-publish-heroku:
-	heroku container:push web --app eye-prophet
-	heroku container:release web --app eye-prophet
-
-run:
-	docker run --rm -p 4000:80 hardandheavy/eye-prophet
+dev:
+	docker run -it --rm -p 4000:80 eye-prophet:$(tag)
